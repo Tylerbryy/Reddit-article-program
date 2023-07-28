@@ -146,3 +146,8 @@ print(Fore.LIGHTGREEN_EX + "Reddit Post rewriting completed." + Style.RESET_ALL)
 #minimize the functions
 #optimize their usage
 #tailor prompt to produce the best output
+
+
+#Brainstorming features to add 
+#fetch from multiple subreddits
+#add history log (for post that is already written. To avoid rewritting the same post. That's if you plan to run within >2 hours of each other so other post have time to show)
