@@ -35,7 +35,7 @@ num_of_posts = int(input(Fore.LIGHTBLUE_EX + "How many posts do you want to fetc
 clear_screen()
 num_of_variations = int(input(Fore.LIGHTBLUE_EX + "How many variations of each post do you want? " + Style.RESET_ALL))
 clear_screen()
-subreddit_name = input(Fore.LIGHTBLUE_EX + "Enter a subreddit to search (press enter to skip): " + Style.RESET_ALL)
+subreddit_name = input(Fore.LIGHTBLUE_EX + "Enter a subreddit to search: " + Style.RESET_ALL)
 clear_screen()
 
 print(Style.BRIGHT + Fore.LIGHTBLUE_EX + f"Fetching and rewriting {num_of_posts} posts, each with {num_of_variations} variations." + Style.RESET_ALL)
@@ -65,7 +65,7 @@ def generate_post_content_with_retry(post_url: str):
     while retries < 10:  # Maximum 10 retries
         try:
             messages = []
-            messages.append({"role": "user", "content": f"""I will give you a URL to a Reddit post. Your job is to rewrite the post and make it more engaging in a article format. All I want is the post don't put the title in the response, no extra comments and dont put the labels. I also want it to be 2,000 words. POST URL: {post_url}"""})
+            messages.append({"role": "user", "content": f"""I will give you a URL to a Reddit post. Your job is to rewrite the post and make it more engaging in a article format. All I want is the post, no extra comments. POST URL: {post_url}"""})
 
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
@@ -138,6 +138,7 @@ for url in tqdm(post_urls, desc="Rewriting Posts", unit="post", colour="green"):
 
 clear_screen()
 print(Fore.LIGHTGREEN_EX + "Reddit Post rewriting completed." + Style.RESET_ALL)
+
 
 
 #notes
